@@ -32,6 +32,10 @@ public class TodoServiceImpl implements TodoService {
     public int sum() {
         int x = 5;
         int y = 4;
+        int z = 3;
+        int d = 2;
+        int a = 1;
+        int b = 45;
         int sum = x + y;
         return sum;
     }
