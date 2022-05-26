@@ -36,6 +36,7 @@ jobs:
           name: target-artifact
           path: target
       - name: Archive test results
+        if: success() || failure()
         uses: actions/upload-artifact@v2
         with:
           name: test-result-junit
