@@ -56,6 +56,11 @@ public class TodoController {
         Todo todo = service.duplicateTodo(id);
         return ResponseEntity.ok(todo);
     }
+    
+    @PostMapping("dummy")
+    public ResponseEntity<Todo> dumyEndpoint(@Valid @RequestBody Todo request) {
+        return ResponseEntity.ok(null);
+    }
 
     @PostMapping("/clear-completed")
     public ResponseEntity<Void> clearCompletedTodo() {
