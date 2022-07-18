@@ -33,7 +33,7 @@ jobs:
           npm config set registry ${{ secrets.THUNDRA_REGISTRY }}
           npm config set _auth ${{ secrets.THUNDRA_REGISTRY_AUTH }}
       - name: Foresight Action
-        uses: thundra-io/foresight-test-kit-action@initial-action
+        uses: thundra-io/foresight-test-kit-action@master
         with:
           api_key: ${{ secrets.THUNDRA_APIKEY }}
           test_framework: junit
