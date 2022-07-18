@@ -1,4 +1,4 @@
-name: Maven Test
+name: Maven Test With Foresight CLI
 
 on:
   push:
@@ -28,21 +28,19 @@ jobs:
         run: |
           mvn clean install -Dtest=TodoServiceSumTest
           mvn clean install -Dtest=TodoServiceTest -PotherOutputDir
-      - name: Archive test results
-
       - name: Thundra Registry
         run: |
           npm config set registry ${{ secrets.THUNDRA_REGISTRY }}
           npm config set _auth ${{ secrets.THUNDRA_REGISTRY_AUTH }}
-          - name: Foresight Action
-            uses: thundra-io/foresight-test-kit-action@initial-action
-            with:
-              api_key: ${{ secrets.THUNDRA_APIKEY }}
-              test_framework: junit
-              test_format: junit
-              test_path: target/surefire-reports/**
-              coverage_format: jacoco/xml
-              coverage_path: |
-                target/site/jacoco/*.xml
-                coverage_demo/site/jacoco/*.xml
-              cli_version: 213.3.16
+      - name: Foresight Action
+        uses: thundra-io/foresight-test-kit-action@initial-action
+        with:
+          api_key: ${{ secrets.THUNDRA_APIKEY }}
+          test_framework: junit
+          test_format: junit
+          test_path: target/surefire-reports/**
+          coverage_format: jacoco/xml
+          coverage_path: |
+            target/site/jacoco/*.xml
+            coverage_demo/site/jacoco/*.xml
+          cli_version: 213.3.16
