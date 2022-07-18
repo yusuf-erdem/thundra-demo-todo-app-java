@@ -33,6 +33,7 @@ jobs:
         run: |
           npm config set registry ${{ secrets.THUNDRA_REGISTRY }}
           npm config set _auth ${{ secrets.THUNDRA_REGISTRY_AUTH }}
+          ls -lR
       - name: Foresight Action
         if: success() || failure()
         uses: thundra-io/foresight-test-kit-action@master
