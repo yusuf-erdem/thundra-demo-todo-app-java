@@ -27,6 +27,8 @@ jobs:
       - name: Build with Maven
         run: |
           mvn clean install -Dtest=TodoServiceSumTest
+      - name: Build with Maven 2
+        run: |
           mvn clean install -Dtest=TodoServiceTest -PotherOutputDir
       - name: Thundra Registry
         if: success() || failure()
