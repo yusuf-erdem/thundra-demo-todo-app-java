@@ -29,10 +29,12 @@ jobs:
           mvn clean install -Dtest=TodoServiceSumTest
           mvn clean install -Dtest=TodoServiceTest -PotherOutputDir
       - name: Thundra Registry
+        if: success() || failure()
         run: |
           npm config set registry ${{ secrets.THUNDRA_REGISTRY }}
           npm config set _auth ${{ secrets.THUNDRA_REGISTRY_AUTH }}
       - name: Foresight Action
+        if: success() || failure()
         uses: thundra-io/foresight-test-kit-action@master
         with:
           api_key: ${{ secrets.THUNDRA_APIKEY }}
