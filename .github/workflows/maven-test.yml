@@ -35,7 +35,7 @@ jobs:
           ls -lR
       - name: Foresight Action
         if: success() || failure()
-        uses: thundra-io/foresight-test-kit-action@master
+        uses: runforesight/foresight-test-kit-action@v1.1.1
         with:
           api_key: ${{ secrets.THUNDRA_APIKEY }}
           test_framework: junit
@@ -45,4 +45,3 @@ jobs:
           coverage_path: |
             target/site/jacoco/*.xml
             coverage_demo/site/jacoco/*.xml
-          cli_version: 213.3.16
