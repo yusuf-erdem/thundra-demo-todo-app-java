@@ -7,7 +7,7 @@ on:
     branches: [master]
   workflow_dispatch:
 env:
-  FORESIGHT_UPLOADER_SIGNER_URL: https://upload.thundra.us
+  FORESIGHT_UPLOADER_SIGNER_URL: https://upload.service.runforesight.me
 jobs:
   build:
     name: Build
@@ -27,12 +27,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn clean install
-      - name: Thundra Registry
-        if: success() || failure()
-        run: |
-          npm config set registry ${{ secrets.THUNDRA_REGISTRY }}
-          npm config set _auth ${{ secrets.THUNDRA_REGISTRY_AUTH }}
-          ls -lR
+    
       - name: Foresight Action
         if: success() || failure()
         uses: runforesight/foresight-test-kit-action@v1
