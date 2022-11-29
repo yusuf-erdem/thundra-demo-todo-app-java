@@ -76,7 +76,7 @@ class TodoServiceTest {
         when(repository.save(any(TodoEntity.class))).thenAnswer((Answer<TodoEntity>) invocationOnMock -> invocationOnMock.getArgument(0, TodoEntity.class));
         Todo actual = service.updateTodo(1L, expected);
         assertThat(actual).extracting(Todo::getId, Todo::getTitle, Todo::isCompleted)
-                .containsExactly(1L, expected.getTitle(), expected.isCompleted());
+                .containsExactly(3L, expected.getTitle(), expected.isCompleted());
     }
 
     @Test
